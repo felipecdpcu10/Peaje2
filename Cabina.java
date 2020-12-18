@@ -1,35 +1,131 @@
 
-import java.util.ArrayList;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.util.HashMap;
 import java.util.Map;
 
-//MAIN DEL PROYECTO
 
-public class Cabina {
-	public static void main(String arg[]){
+public class Peaje extends Vehiculo{
 	
-		//Creamos un objeto peaje para enviar los parámetros iniciales 
-		Peaje peaje1 = new Peaje();
+	private int valorPeaje;
+	private int Turno;
+	final static String ruta = "C:\\camion1.txt";
+	
+	
+	
+	public Peaje(int ejes, int toneladas, String marca,int patente, int valorPeaje, int turno, int tipo) {
+		super(ejes,toneladas,marca,patente, tipo);
+		this.valorPeaje = valorPeaje;
+		this.Turno = turno;
+	}
+	public Peaje() {
+	 
+	}
+	 
+public static Map<Integer, Object> GuardarDatosHashmap(){
+        
+		Vehiculo objetos[] = new Vehiculo[100]; 
+        Map<Integer, Object> mapFileContents = new HashMap<Integer, Object>();
+        BufferedReader br = null;
+        
+        try{
+            
+            //Crea objecto File
+            File file = new File(ruta);
+            
+            //Crea el BufferedReader
+            br = new BufferedReader( new FileReader(file) );
+            
+            String line = "";
+           
+            //lee el txt linea por linea
+            int i = 0 ; 
+            while ( (line = br.readLine()) != null ){
+                
+                //Guardar en el arreglo parts todo lo que esté antes del ;
+                String[] parts = line.split(";");
+                
+                //Guarda en las variables lo que lee del txt
+                String marca = parts[0].trim();
+                Integer ejes = Integer.parseInt( parts[1].trim());
+                Integer toneladas = Integer.parseInt( parts[2].trim() );
+                Integer turno  = Integer.parseInt( parts[3].trim() );
+                Integer patente = Integer.parseInt(parts[4].trim());
+                Integer tipo = Integer.parseInt(parts[5].trim());
+                Valor atributos = new Valor(ejes,toneladas, marca, patente, turno ,tipo);
+                
+                
+               
+                //agrega patente, atributos en HashMap si no están vacías
+                if( !patente.equals("") && !atributos.equals(null) ) {
+                    mapFileContents.put(patente,atributos);
+               if(tipo == 1 ) {
+            	    objetos[i] = new Camion(ejes, toneladas, marca, patente, tipo);
+            	    System.out.println("cid");
+            	    mapFileContents.put(patente, objetos[i]);
+            	    
+         		   //System.out.println(mapFileContents.toString());
+            	//    System.out.println(mapFileContents.get(patente));
+            	  //  System.out.println(objetos[i].toString());
+               }else {
+            	   if(tipo == 2) {
+            		   objetos[i] = new Auto(tipo, toneladas, marca, patente, tipo);
+            		   mapFileContents.put(patente, objetos[i]);
+            		   //System.out.println(mapFileContents.toString());
+            	   }else {
+            		   if(tipo == 3) {
+            			   objetos[i] = new Motocicleta(ejes, toneladas, marca, patente, tipo);
+            		   }
+            	   }
+               }
+                i++; 
+            }
+            }                
+        }catch(Exception e){
+            e.printStackTrace();
+        }finally{
+            
+            //Cierre de BufferedReader
+            if(br != null){
+                try { 
+                    br.close(); 
+                }catch(Exception e){};
+            }
+        } 
+        
+        
+        
+        return mapFileContents;
+        
+    }
+@Override
+public int CalcularPeaje(int ejes , int toneladas) {
+	// TODO Auto-generated method stub
+	return 0;
+}
 
-		peaje1.GuardarDatosHashmap();
-		
-		for(Map.Entry<Integer, Object> entry : peaje1.GuardarDatosHashmap().entrySet()){
+
+	public void Turnos(  int turno ) {
+		Peaje a = new Peaje(); 
+		System.out.println("\n");
+		System.out.println("Vehiculos del turno "+ turno +":");
+		for(Map.Entry<Integer, Object> entry : a.GuardarDatosHashmap().entrySet()){
 	        Valor variable = (Valor) entry.getValue();
-	      //  if(variable.getTipo()==1) {
-	        	
-	        //}
-			System.out.println( entry.getKey() + " => " + variable.getMarca() + " " + variable.getEjes() + " "  + variable.getToneladas() + " " + variable.getTurno() + " " + variable.getPatente() + " " + variable.getTipo());
+			if(variable.getTurno() == turno) {
+				
+				System.out.println( entry.getKey() + " => " + variable.getMarca() + " " + variable.getTurno() );
+				
+				
+		    }
 			
+	    }
+			
+			
+	}
+		
+		public void mostrar() {
+		
 		}
-			
 		
-		peaje1.Turnos(2);
-		
-		
-			//System.out.println(peaje1.toString());
-		
-		
-	
-
-	}	
-	
 }
