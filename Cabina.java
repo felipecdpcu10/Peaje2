@@ -1,25 +1,35 @@
 
-public class Auto extends Vehiculo {
+import java.util.ArrayList;
+import java.util.Map;
 
-	public Auto(int ejes,int toneladas, String marca, int patente , int tipo) {
-		super(ejes,toneladas, marca, patente , tipo);
-		
-	}
+//MAIN DEL PROYECTO
 
+public class Cabina {
+	public static void main(String arg[]){
 	
-	public  int CalcularPeaje(int ejes , int toneladas) {
+		//Creamos un objeto peaje para enviar los parámetros iniciales 
+		Peaje peaje1 = new Peaje();
+
+		peaje1.GuardarDatosHashmap();
 		
-		int PagoTotal = 0; //Inicialisamos el acumulador a usar .
-		//Condicionales dependiendo de cuantos ejes y toneladas tiene el camion. 
-		if(ejes<=2) {   
-    		PagoTotal=4400+600*toneladas; 
-    	}else {
-    		if(ejes>2){
-    			PagoTotal=7800+600*toneladas;
-    		}
-    	}
+		for(Map.Entry<Integer, Object> entry : peaje1.GuardarDatosHashmap().entrySet()){
+	        Valor variable = (Valor) entry.getValue();
+	      //  if(variable.getTipo()==1) {
+	        	
+	        //}
+			System.out.println( entry.getKey() + " => " + variable.getMarca() + " " + variable.getEjes() + " "  + variable.getToneladas() + " " + variable.getTurno() + " " + variable.getPatente() + " " + variable.getTipo());
+			
+		}
+			
 		
-		return PagoTotal; 
+		peaje1.Turnos(2);
+		
+		
+			//System.out.println(peaje1.toString());
+		
+		
 	
-	}
+
+	}	
+	
 }
