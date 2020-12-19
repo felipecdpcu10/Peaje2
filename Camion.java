@@ -1,4 +1,3 @@
-
 public class Camion extends Vehiculo{
 	
 	private int toneladas;
