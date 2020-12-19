@@ -1,26 +1,27 @@
 
 public class Motocicleta extends Vehiculo {
 
-	public Motocicleta(int ejes,int toneladas, String marca, int patente , int tipo) {
-		super(ejes,toneladas, marca, patente, tipo);
+	public Motocicleta(String marca,int ejes, int toneladas, int turno,  int patente , int tipo, int mes, int año ) {
+		super(marca,ejes, toneladas, patente, tipo, turno, mes, año);
 		
 	}
 
-	
-	
-	public  int CalcularPeaje(int ejes , int toneladas) {
+	public Motocicleta() {
 		
-		int PagoTotal = 0; //Inicialisamos el acumulador a usar .
-		//Condicionales dependiendo de cuantos ejes y toneladas tiene el camion. 
-		if(ejes<=2) {   
-    		PagoTotal=4400+600*toneladas; 
-    	}else {
-    		if(ejes>2){
-    			PagoTotal=7800+600*toneladas;
-    		}
-    	}
+	}
+	
+	public  int CalcularPeaje() {
+		
+		int PagoTotal = 0; 
+		PagoTotal = 4400; 
 		
 		return PagoTotal; 
 	
+	}
+
+	@Override
+	public int CalcularPeaje(int ejes, int toneladas) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 }
