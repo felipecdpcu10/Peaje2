@@ -1,6 +1,3 @@
-
-
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -11,7 +8,7 @@ import java.util.Map.Entry;
 public class Peaje extends Vehiculo{
 	
 	private int valorPeaje;
-	final static String ruta = "C:\\camion1.txt";
+	final static String ruta = "C:\\Users\\EQUIPO\\Desktop\\camion1.txt";
 	 static Map<Integer, Vehiculo> mapFileContents = new HashMap<Integer, Vehiculo>();
 	
 	public  Peaje( Map<Integer, Vehiculo> mapFileContents) {
@@ -66,19 +63,19 @@ public class Peaje extends Vehiculo{
                if(tipo == 1 ) {
             	    Camion c = new Camion(marca , ejes, toneladas, turno, patente , tipo, mes, año);
             	    mapFileContents.put(patente, c);
-            	   // System.out.println("Camion => " + mapFileContents.get(patente));
+            	    System.out.println("Camion => " + mapFileContents.get(patente));
             	 
                }else if
             	   (tipo == 2) {
             		   Auto a = new Auto(marca, ejes, toneladas, turno, patente, tipo, mes, año);
             		   
             		   mapFileContents.put(patente, a);
-            		 //  System.out.println("Auto => " + mapFileContents.get(patente));
+            		  System.out.println("Auto => " + mapFileContents.get(patente));
             		   
             	   }else if(tipo == 3) {
             			   Motocicleta m = new Motocicleta(marca, ejes, toneladas, turno, patente, tipo, mes, año);
             			   mapFileContents.put(patente, m);
-            			 //  System.out.println("Motocicleta => " + mapFileContents.get(patente));
+            			   System.out.println("Motocicleta => " + mapFileContents.get(patente));
             	   }
             }
              
@@ -130,34 +127,34 @@ public int CalcularPeaje(int ejes , int toneladas) {
 				Camion c1 = new Camion();
 				Motocicleta m1 = new Motocicleta();
 				
+				//System.out.println(entry.getValue().getturno());
 				
 				if(entry.getValue().getturno() == turno) {
-					for(Entry<Integer, Vehiculo> entry2 : a.GuardarDatosHashmap().entrySet()){
-				if(entry.getValue().getTipo()== 1 ) { //Camion
-					sumaTotal1 = sumaTotal1 + c1.CalcularPeaje(entry.getValue().getEjes(), entry.getValue().getToneladas()) ;
-					System.out.println(sumaTotal1);
-				}else if(entry.getValue().getTipo()==2) { //Auto
-					sumaTotal2 = a1.CalcularPeaje() + sumaTotal2; 
-					System.out.println(sumaTotal2);
-				}else if(entry.getValue().getTipo()==3) {//Motocicleta 
-					sumaTotal3 = m1.CalcularPeaje() + sumaTotal3;
 					
-					System.out.println(sumaTotal3);
+					if(entry.getValue().getTipo()== 1 ) { //Camion
+						
+						sumaTotal1 = sumaTotal1 + c1.CalcularPeaje(entry.getValue().getEjes(), entry.getValue().getToneladas()) ;
+						//System.out.println(sumaTotal1);
+					}else if(entry.getValue().getTipo()==2) { //Auto
+						sumaTotal2 = a1.CalcularPeaje() + sumaTotal2; 
+						//System.out.println(sumaTotal2);
+					}else if(entry.getValue().getTipo()==3) {//Motocicleta 
+						sumaTotal3 = m1.CalcularPeaje() + sumaTotal3;
+						//System.out.println(sumaTotal3);
+					}
 				}
 			}
+			int autos=sumaTotal2/4400;
+			System.out.println("suma total: "+sumaTotal2+" han pasado "+autos+" autos");
+			
+				int motos= sumaTotal3/4400;
+				System.out.println("SUMA TOTAL: "+sumaTotal3+" han pasado "+motos+" motos");
 				
-		}
-			System.out.println(sumaTotal1);
-			System.out.println(sumaTotal2);
-			System.out.println(sumaTotal3);
-			 sumaTotal= (sumaTotal1 + sumaTotal2 + sumaTotal3) ; 
-			System.out.println("Suma Total turno "+ turno + " es : $"+sumaTotal);
-	}
+				//System.out.println(sumaTotal2);
+			
+			// sumaTotal= (sumaTotal1 + sumaTotal2 + sumaTotal3) ; 
+			//System.out.println("Suma Total turno "+ turno + " es : $"+sumaTotal);
 		}
 }
-			
-
-
-
 
 		
