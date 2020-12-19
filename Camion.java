@@ -3,11 +3,14 @@ public class Camion extends Vehiculo{
 	
 	private int toneladas;
 
-	public Camion(int ejes, int toneladas, String marca, int patente , int tipo) {
-		super(ejes,toneladas, marca, patente , tipo);
+	public Camion(String marca,int ejes, int toneladas, int turno,  int patente , int tipo, int mes, int año) {
+		super(marca,ejes, toneladas, turno , patente, tipo, mes, año);
 		this.toneladas = toneladas;
 	}
 	
+	public Camion() {
+		
+	}
 
 	public  int CalcularPeaje(int ejes , int toneladas) {
 		
