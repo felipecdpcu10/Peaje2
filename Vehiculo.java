@@ -1,4 +1,3 @@
-
 public abstract class Vehiculo {
 	
 	protected String marca;
@@ -69,12 +68,4 @@ public abstract class Vehiculo {
 		return "Vehiculo [marca=" + marca + ", ejes=" + ejes + ", toneladas=" + toneladas + ", turno=" + turno
 				+ ", patente=" + patente + ", tipo=" + tipo + ", mes=" + mes + ", año=" + año + "]";
 	}
-	
-	
-	
-	
-	
-	
-	
 }
-
