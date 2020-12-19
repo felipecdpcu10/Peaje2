@@ -1,8 +1,7 @@
-
 public class Motocicleta extends Vehiculo {
 
 	public Motocicleta(String marca,int ejes, int toneladas, int turno,  int patente , int tipo, int mes, int año ) {
-		super(marca,ejes, toneladas, patente, tipo, turno, mes, año);
+		super(marca,ejes, toneladas, turno,patente,tipo, mes, año);
 		
 	}
 
