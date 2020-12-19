@@ -1,21 +1,25 @@
 
 public abstract class Vehiculo {
-
+	
+	protected String marca;
 	protected int ejes;
 	protected int toneladas;
-	protected String marca; 
+	protected int turno ;
 	protected int patente;
 	protected int tipo; 
-	protected int  meses [] = new int[12]; 
+	protected int mes ; 
+	protected int año; 
 	
-    public Vehiculo(int ejes,int toneladas, String marca, int patente , int tipo) {
-		
+    public Vehiculo(String marca , int ejes, int  toneladas, int turno,  int patente , int tipo, int mes , int año) {
+    	this.marca = marca;
 		this.ejes = ejes;
-		this.marca = marca;
-		this.patente = patente;
 		this.toneladas = toneladas;
-		
+		this.turno = turno ; 
+		this.patente = patente;
 		this.tipo = tipo; 
+		this.mes = mes ; 
+		this.año = año ; 
+		
 	}
     public Vehiculo() {
     	
@@ -51,13 +55,26 @@ public abstract class Vehiculo {
 		return tipo;
 	}
 	
+	public void setturno(int turno) {
+		this.turno = turno; 
+	}
+	public int getturno() {
+		return turno;
+	}
+	
+	
 	public abstract int CalcularPeaje(int ejes , int toneladas);
 	@Override
 	public String toString() {
-		return "Vehiculo [ejes=" + ejes + ", toneladas=" + toneladas + ", marca=" + marca + ", patente=" + patente
-				+ ", tipo=" + tipo + "]";
-	} 
+		return "Vehiculo [marca=" + marca + ", ejes=" + ejes + ", toneladas=" + toneladas + ", turno=" + turno
+				+ ", patente=" + patente + ", tipo=" + tipo + ", mes=" + mes + ", año=" + año + "]";
+	}
+	
+	
+	
+	
 	
 	
 	
 }
+
