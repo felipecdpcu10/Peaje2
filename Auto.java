@@ -1,4 +1,3 @@
-
 public class Auto extends Vehiculo {
 
 	public Auto( String marca,int ejes, int toneladas, int turno,  int patente , int tipo, int mes, int año ) {
